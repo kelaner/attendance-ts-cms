@@ -4,7 +4,8 @@
   "info": {
     "singularName": "session",
     "pluralName": "sessions",
-    "displayName": "Session"
+    "displayName": "Session",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,6 +15,34 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "complete_students": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::student.student",
+      "inversedBy": "complete_sessions"
+    },
+    "classes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::class.class",
+      "mappedBy": "sessions"
+    },
+    "uid": {
+      "type": "uid",
+      "required": true
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "start_time": {
+      "type": "datetime",
+      "required": false
+    },
+    "end_time": {
+      "type": "datetime"
     }
   }
 }

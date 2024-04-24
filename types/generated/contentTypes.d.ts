@@ -362,18 +362,75 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiSessionSession extends Schema.CollectionType {
-  collectionName: 'sessions';
+export interface ApiClassClass extends Schema.CollectionType {
+  collectionName: 'classes';
   info: {
-    singularName: 'session';
-    pluralName: 'sessions';
-    displayName: 'Session';
+    singularName: 'class';
+    pluralName: 'classes';
+    displayName: 'Class';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    students: Attribute.Relation<
+      'api::class.class',
+      'manyToMany',
+      'api::student.student'
+    >;
+    sessions: Attribute.Relation<
+      'api::class.class',
+      'manyToMany',
+      'api::session.session'
+    >;
+    uid: Attribute.UID & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::class.class',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::class.class',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSessionSession extends Schema.CollectionType {
+  collectionName: 'sessions';
+  info: {
+    singularName: 'session';
+    pluralName: 'sessions';
+    displayName: 'Session';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    complete_students: Attribute.Relation<
+      'api::session.session',
+      'manyToMany',
+      'api::student.student'
+    >;
+    classes: Attribute.Relation<
+      'api::session.session',
+      'manyToMany',
+      'api::class.class'
+    >;
+    uid: Attribute.UID & Attribute.Required;
+    completed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    start_time: Attribute.DateTime;
+    end_time: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -385,6 +442,51 @@ export interface ApiSessionSession extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStudentStudent extends Schema.CollectionType {
+  collectionName: 'students';
+  info: {
+    singularName: 'student';
+    pluralName: 'students';
+    displayName: 'Student';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    avatar: Attribute.Media & Attribute.Required;
+    uid: Attribute.UID & Attribute.Required;
+    classes: Attribute.Relation<
+      'api::student.student',
+      'manyToMany',
+      'api::class.class'
+    >;
+    gender: Attribute.Enumeration<['undefined', 'male', 'female']> &
+      Attribute.DefaultTo<'undefined'>;
+    complete_sessions: Attribute.Relation<
+      'api::student.student',
+      'manyToMany',
+      'api::session.session'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::student.student',
       'oneToOne',
       'admin::user'
     > &
@@ -828,7 +930,9 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::class.class': ApiClassClass;
       'api::session.session': ApiSessionSession;
+      'api::student.student': ApiStudentStudent;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
