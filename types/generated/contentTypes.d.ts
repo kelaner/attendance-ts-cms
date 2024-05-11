@@ -469,13 +469,12 @@ export interface ApiStudentStudent extends Schema.CollectionType {
       'manyToMany',
       'api::class.class'
     >;
-    gender: Attribute.Enumeration<['undefined', 'male', 'female']> &
-      Attribute.DefaultTo<'undefined'>;
     complete_sessions: Attribute.Relation<
       'api::student.student',
       'manyToMany',
       'api::session.session'
     >;
+    avatars: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

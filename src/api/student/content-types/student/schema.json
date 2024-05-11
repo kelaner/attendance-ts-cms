@@ -34,20 +34,21 @@
       "target": "api::class.class",
       "inversedBy": "students"
     },
-    "gender": {
-      "type": "enumeration",
-      "enum": [
-        "undefined",
-        "male",
-        "female"
-      ],
-      "default": "undefined"
-    },
     "complete_sessions": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::session.session",
       "mappedBy": "complete_students"
+    },
+    "avatars": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
