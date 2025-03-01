@@ -1,66 +1,48 @@
-# 🚀 Getting started with Strapi
+### 项目简介
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+该项目是[GitHub - kelaner/facial-attendance-system](https://github.com/kelaner/facial-attendance-system)的后端代码库，基于 Strapi 构建，用于管理考勤数据和提供 API 接口支持，并为前端应用提供数据支持和管理界面。
+
+### 登录信息
+
+| Email       | Password     |
+|-------------|--------------|
+| cms@cms.com | Cms123456    |
+
+### 前端代码库
+
+- **云视-智能考勤系统前端代码库**:
+  - 该项目的前端代码库地址为：[GitHub - kelaner/facial-attendance-system](https://github.com/kelaner/facial-attendance-system)。
+  - 该代码库包含了前端的实现，支持项目的前端功能。
 
 
-### `login`
+### 开发与运行
 
-```
-Email:cms@cms.com
-Password:Cms123456
-```
+#### 开发模式
 
+启动 Strapi 应用程序，启用自动重新加载功能，方便开发调试。
 
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
+```bash
 npm run develop
-# or
+# 或
 yarn develop
 ```
 
-### `start`
+#### 生产模式
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+启动 Strapi 应用程序，禁用自动重新加载功能，适用于生产环境。
 
-```
+```bash
 npm run start
-# or
+# 或
 yarn start
 ```
 
-### `build`
+#### 构建 Admin 面板
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+构建管理后台，生成优化后的静态资源。
 
-```
+```bash
 npm run build
-# or
+# 或
 yarn build
 ```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
